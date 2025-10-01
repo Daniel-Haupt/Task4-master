@@ -1,13 +1,77 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
-import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Admin from './Admin';
+import { Admin } from './Admin';
 import Customer from './Customer';
 
+export type Car = {
+  make: string;
+  model: string;
+  costPerDay: string;
+};
 
 const Stack = createNativeStackNavigator();
+
+function HomeScreen({ navigation }: any) {
+  const [text, setText] = useState('');
+  const [denied, setDenied] = useState(false);
+
+  const Login = () => {
+    if (text.toLowerCase() === 'admin') {
+      navigation.navigate('Admin');
+      setDenied(false);
+    } else if (text.toLowerCase() === 'customer') {
+      navigation.navigate('Customer');
+      setDenied(false);
+    } else {
+      setDenied(true);
+      setText('');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.Text}>Welcome to my booking service application that allows you to design a car.</Text>
+      <Text style={styles.Text}>Please Log-in to continue</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter text here"
+        onChangeText={setText}
+        value={text}
+      />
+      <TouchableOpacity style={styles.button} onPress={Login}>
+        <Text style={styles.buttonText}>Log-in</Text>
+      </TouchableOpacity>
+      {denied && (
+        <>
+          <Text style={styles.Text}>Access Denied</Text>
+          <Text style={styles.Text}>If you are a customer type customer</Text>
+        </>
+      )}
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+export default function App() {
+  const [carList, setCarList] = useState<Car[]>([]);
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={HomeScreen} />
+        <Stack.Screen name="Admin">
+          {(props) => <Admin {...props} carList={carList} setCarList={setCarList} />}
+        </Stack.Screen>
+        <Stack.Screen name="Customer">
+          {(props) => <Customer {...props} carList={carList} />}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -17,8 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Text: {
-    
-    top: -350,  
+    top: -350,
     marginBottom: 20,
     color: '#00ff00ff',
     fontSize: 40,
@@ -57,61 +120,4 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#fff',
   },
-   
 });
-
-function HomeScreen({ navigation }: any) {
-  const [text, setText] = useState('');
-  const [denied, setDenied] = useState(false);
-
-  const Login = () => {
-    if (text.toLowerCase() == 'admin') {
-      navigation.navigate('Admin');
-      setDenied(false);
-    } else if (text.toLowerCase() == 'customer') {
-      navigation.navigate('Customer');
-      setDenied(false);
-    } else {
-      setDenied(true);
-      setText('');
-    }
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.Text}>Welcome to my booking service application that allows you to design a car.</Text>
-      <Text style={styles.Text}>Please Log-in to continue</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter text here"
-        onChangeText={setText}
-        value={text}
-      />
-      <TouchableOpacity style={styles.button} onPress={Login}>
-        <Text style={styles.buttonText}>Log-in</Text>
-      </TouchableOpacity>
-      {denied && (
-        <>
-          <Text style={styles.Text}>Access Denied</Text>
-          <Text style={styles.Text}>If you are a customer type customer</Text>
-        </>
-      )}
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Admin" component={Admin} />
-        <Stack.Screen name="Customer" component={Customer} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-  
-
-
