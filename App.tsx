@@ -74,7 +74,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator id={undefined} initialRouteName="Login">
         <Stack.Screen name="Login" component={HomeScreen} />
         <Stack.Screen name="Admin">
           {(props) => <Admin {...props} carList={carList} setCarList={setCarList} />}

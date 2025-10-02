@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 24,
-    color: '#00ff00ff',
+    color: '#ffffffff',
     marginBottom: 20,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   selectedCarItem: {
-    backgroundColor: '#00ff00ff',
+    backgroundColor: '#000000ff',
   },
   carText: {
     color: '#ffffff',
