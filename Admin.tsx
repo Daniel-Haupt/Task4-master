@@ -72,7 +72,11 @@ export function Admin({ carList, setCarList, navigation }: AdminProps) {
           <Text style={styles.listTitle}>Added Cars:</Text>
           {carList.map((car, index) => (
             <Text key={index} style={styles.carItem}>
+<<<<<<< HEAD
               {`${index + 1}. Make: ${car.make} Model: ${car.model} Cost per day: R ${car.costPerDay}`}
+=======
+              {`${index + 1}. Make: ${car.make} Model: ${car.model} Cost per Day: R ${car.costPerDay}`}
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
             </Text>
           ))}
         </View>

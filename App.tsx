@@ -5,7 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Admin } from './Admin';
 import Customer from './Customer';
+<<<<<<< HEAD
 import Confirmation from './Confirmation';
+=======
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
 
 export type Car = {
   make: string;
@@ -13,6 +16,7 @@ export type Car = {
   costPerDay: string;
 };
 
+<<<<<<< HEAD
 export type RootStackParamList = {
   Login: undefined;
   Admin: undefined;
@@ -25,6 +29,9 @@ export type RootStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+=======
+const Stack = createNativeStackNavigator();
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
 
 function HomeScreen({ navigation }: any) {
   const [text, setText] = useState('');
@@ -45,9 +52,13 @@ function HomeScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
       <Text style={styles.Text}>
         Welcome to my booking service application that allows you to design a car.
       </Text>
+=======
+      <Text style={styles.Text}>Welcome to my booking service application that allows you to design a car.</Text>
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
       <Text style={styles.Text}>Please Log-in to continue</Text>
       <TextInput
         style={styles.input}
@@ -74,7 +85,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
+<<<<<<< HEAD
       <Stack.Navigator id={undefined} initialRouteName="Login">
+=======
+      <Stack.Navigator initialRouteName="Login">
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
         <Stack.Screen name="Login" component={HomeScreen} />
         <Stack.Screen name="Admin">
           {(props) => <Admin {...props} carList={carList} setCarList={setCarList} />}
@@ -82,7 +97,10 @@ export default function App() {
         <Stack.Screen name="Customer">
           {(props) => <Customer {...props} carList={carList} />}
         </Stack.Screen>
+<<<<<<< HEAD
         <Stack.Screen name="Confirmation" component={Confirmation} />
+=======
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -96,7 +114,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Text: {
+<<<<<<< HEAD
     top: -250,
+=======
+    top: -350,
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
     marginBottom: 20,
     color: '#00ff00ff',
     fontSize: 40,

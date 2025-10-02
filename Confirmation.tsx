@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useRoute, RouteProp } from '@react-navigation/native';
@@ -47,3 +48,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+=======
+import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Admin } from './Admin';
+import Customer from './Customer';
+>>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
