@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import { Admin } from './Admin';
 import Customer from './Customer';
-<<<<<<< HEAD
 import Confirmation from './Confirmation';
-=======
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
 
+// Types
 export type Car = {
   make: string;
   model: string;
   costPerDay: string;
 };
 
-<<<<<<< HEAD
 export type RootStackParamList = {
   Login: undefined;
   Admin: undefined;
@@ -28,20 +33,30 @@ export type RootStackParamList = {
   };
 };
 
+// Navigation stack
 const Stack = createNativeStackNavigator<RootStackParamList>();
-=======
-const Stack = createNativeStackNavigator();
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
 
-function HomeScreen({ navigation }: any) {
+// Props typing for HomeScreen
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Login'
+>;
+
+type HomeScreenProps = {
+  navigation: HomeScreenNavigationProp;
+};
+
+// Home screen component
+function HomeScreen({ navigation }: HomeScreenProps) {
   const [text, setText] = useState('');
   const [denied, setDenied] = useState(false);
 
-  const Login = () => {
-    if (text.toLowerCase() === 'admin') {
+  const handleLogin = () => {
+    const lowerText = text.toLowerCase();
+    if (lowerText === 'admin') {
       navigation.navigate('Admin');
       setDenied(false);
-    } else if (text.toLowerCase() === 'customer') {
+    } else if (lowerText === 'customer') {
       navigation.navigate('Customer');
       setDenied(false);
     } else {
@@ -52,13 +67,10 @@ function HomeScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-<<<<<<< HEAD
       <Text style={styles.Text}>
-        Welcome to my booking service application that allows you to design a car.
+        Welcome to my booking service application that allows you to design a
+        car.
       </Text>
-=======
-      <Text style={styles.Text}>Welcome to my booking service application that allows you to design a car.</Text>
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
       <Text style={styles.Text}>Please Log-in to continue</Text>
       <TextInput
         style={styles.input}
@@ -66,13 +78,15 @@ function HomeScreen({ navigation }: any) {
         onChangeText={setText}
         value={text}
       />
-      <TouchableOpacity style={styles.button} onPress={Login}>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Log-in</Text>
       </TouchableOpacity>
       {denied && (
         <>
           <Text style={styles.Text}>Access Denied</Text>
-          <Text style={styles.Text}>If you are a customer type customer</Text>
+          <Text style={styles.Text}>
+            If you are a customer type customer
+          </Text>
         </>
       )}
       <StatusBar style="auto" />
@@ -80,32 +94,29 @@ function HomeScreen({ navigation }: any) {
   );
 }
 
+// App component
 export default function App() {
   const [carList, setCarList] = useState<Car[]>([]);
 
   return (
     <NavigationContainer>
-<<<<<<< HEAD
-      <Stack.Navigator id={undefined} initialRouteName="Login">
-=======
       <Stack.Navigator initialRouteName="Login">
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
         <Stack.Screen name="Login" component={HomeScreen} />
         <Stack.Screen name="Admin">
-          {(props) => <Admin {...props} carList={carList} setCarList={setCarList} />}
+          {(props) => (
+            <Admin {...props} carList={carList} setCarList={setCarList} />
+          )}
         </Stack.Screen>
         <Stack.Screen name="Customer">
           {(props) => <Customer {...props} carList={carList} />}
         </Stack.Screen>
-<<<<<<< HEAD
         <Stack.Screen name="Confirmation" component={Confirmation} />
-=======
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -114,11 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Text: {
-<<<<<<< HEAD
     top: -250,
-=======
-    top: -350,
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
     marginBottom: 20,
     color: '#00ff00ff',
     fontSize: 40,

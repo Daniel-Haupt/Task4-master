@@ -1,31 +1,20 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import {StyleSheet,Text,View,TouchableOpacity,TextInput,FlatList,Modal,Pressable,} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
-
 import { Car } from './App'; 
 import { RootStackParamList } from './App';
-=======
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
-import { Car } from './App';
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
 
 type CustomerProps = {
   carList: Car[];
 };
 
 export default function Customer({ carList }: CustomerProps) {
-<<<<<<< HEAD
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'Customer'>>();
 
   const [selectedCarIndex, setSelectedCarIndex] = useState<number | null>(null);
   const [days, setDays] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
-=======
-  const [selectedCarIndex, setSelectedCarIndex] = useState<number | null>(null);
-  const [days, setDays] = useState('');
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
 
   const selectedCar = selectedCarIndex !== null ? carList[selectedCarIndex] : null;
 
@@ -37,7 +26,6 @@ export default function Customer({ carList }: CustomerProps) {
     return daysNum * costNum;
   };
 
-<<<<<<< HEAD
   const openModal = () => {
     if (selectedCar && days && !isNaN(parseInt(days))) {
       setModalVisible(true);
@@ -61,11 +49,6 @@ export default function Customer({ carList }: CustomerProps) {
     <View style={styles.container}>
       <Text style={styles.header}>You are logged in as Customer!</Text>
 
-=======
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}>You are logged in as Customer!</Text>
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
       {carList.length === 0 ? (
         <Text style={styles.noCars}>No cars available at the moment.</Text>
       ) : (
@@ -83,11 +66,7 @@ export default function Customer({ carList }: CustomerProps) {
                 onPress={() => setSelectedCarIndex(index)}
               >
                 <Text style={styles.carText}>
-<<<<<<< HEAD
                   {item.make} {item.model} - R {item.costPerDay} per day
-=======
-                  {item.make} {item.model} - R {item.costPerDay}/day
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
                 </Text>
               </TouchableOpacity>
             )}
@@ -104,20 +83,13 @@ export default function Customer({ carList }: CustomerProps) {
                 onChangeText={setDays}
               />
 
-<<<<<<< HEAD
               <TouchableOpacity style={styles.confirmButton} onPress={openModal}>
                 <Text style={styles.confirmButtonText}>Show Total</Text>
               </TouchableOpacity>
-=======
-              <Text style={styles.totalCost}>
-                Total Cost: R {calculateCost().toFixed(2)}
-              </Text>
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
             </>
           )}
         </>
       )}
-<<<<<<< HEAD
 
       {/* Modal */}
       <Modal
@@ -165,44 +137,15 @@ const styles = StyleSheet.create({
   subHeader: {
     fontSize: 18,
     color: '#ffffff',
-=======
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#010000ff',
-    paddingHorizontal: 20
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#00ff00ff',
-    textAlign: 'center',
-    marginVertical: 20,
-  }, 
-  subHeader: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#00ff00ff',
-    marginTop: 20,
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
     marginBottom: 10,
   },
   noCars: {
     fontSize: 18,
-<<<<<<< HEAD
     color: '#ff0000',
-=======
-    color: '#ff0000ff',
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
     textAlign: 'center',
     marginTop: 50,
   },
   carItem: {
-<<<<<<< HEAD
     padding: 15,
     backgroundColor: '#393E46',
     borderRadius: 8,
@@ -213,25 +156,12 @@ const styles = StyleSheet.create({
   },
   carText: {
     color: '#ffffff',
-=======
-    padding: 15, 
-    backgroundColor: '#222222ff',
-    borderRadius: 5,
-    marginVertical: 5,
-  },
-  selectedCarItem: {
-    backgroundColor: '#444444ff',
-  },
-  carText: {
-    color: '#ffffffff',
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
     fontSize: 16,
   },
   input: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-<<<<<<< HEAD
     marginBottom: 15,
     paddingHorizontal: 10,
     backgroundColor: '#ffffff',
@@ -287,19 +217,28 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: '100%',
     alignItems: 'center',
-=======
-    marginBottom: 20, 
-    paddingHorizontal: 10,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
   },
-  totalCost: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#00ff00ff',
-    textAlign: 'center',
+  text: {
+    fontSize: 18,
+    color: '#ffffff',
+    marginBottom: 10,
+  },
+  button: {
+    padding: 10,
+    borderRadius: 2,
     marginTop: 20,
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
+    width: 200,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fbff0083',
+    bottom: 0,
+  },
+  buttonText: {
+    color: '#00ff00ff',
+    fontWeight: 'bold',
+    fontSize: 18,
+    textAlign: 'center',
   },
 });
+

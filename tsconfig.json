@@ -1,11 +1,10 @@
 {
-<<<<<<< HEAD
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
-=======
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
->>>>>>> f5e962bfae30628301c1fd9b83e9198f2b92e563
 }
